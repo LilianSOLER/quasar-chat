@@ -2,6 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
+        <q-btn v-if="$route.name.includes('Chat')"  :to="{name: 'Home'}"  flat dense color="white" icon="arrow_back" label="Home"/>
         <q-toolbar-title class="absolute-center">
           {{ title }}
         </q-toolbar-title>

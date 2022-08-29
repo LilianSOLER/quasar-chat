@@ -1,7 +1,7 @@
 <template>
   <q-page class="flex q-pa-md">
-    <q-list class="full-width" separator bordered>
-      <q-item v-for="user in users" :key="user.id" :to='"/chat/" + user.id' clickable v-ripple>
+    <q-list bordered class="full-width" separator>
+      <q-item v-for="user in users" :key="user.id" v-ripple clickable to="/chat">
         <q-item-section avatar>
           <q-avatar color="primary" text-color="white">
             {{ initials(user.name) }}
@@ -14,7 +14,7 @@
         </q-item-section>
 
         <q-item-section side>
-          <q-badge rounded :color="colorBadge(user)" :label="labelBadge(user)" />
+          <q-badge :color="colorBadge(user)" :label="labelBadge(user)" rounded/>
         </q-item-section>
       </q-item>
     </q-list>
@@ -23,9 +23,9 @@
 </template>
 
 <script>
-const users = [ {
+const users = [{
   id: 1,
-  name : 'Lilian Soler',
+  name: 'Lilian Soler',
   email: 'soler.lilian64@gmail.com',
   online: true
 }, {
@@ -52,19 +52,19 @@ const users = [ {
   }]
 
 export default {
-  setup () {
+  setup() {
     return {
       users
     }
   },
   methods: {
-    initials (name) {
+    initials(name) {
       return name.split(' ')[0].charAt(0).toUpperCase() + name.split(' ')[1].charAt(0).toUpperCase()
     },
-    colorBadge (user) {
+    colorBadge(user) {
       return user.online ? 'green' : 'red'
     },
-    labelBadge (user) {
+    labelBadge(user) {
       return user.online ? 'Online' : 'Offline'
     }
   }
