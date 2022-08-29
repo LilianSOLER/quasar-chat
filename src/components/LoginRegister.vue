@@ -19,11 +19,14 @@
       </q-btn>
     </div>
 
+    <p>{{ this.store.egg }}</p>
+
   </q-form>
 </template>
 
 <script>
 import {defineComponent} from 'vue'
+import {useStore} from 'stores/main'
 
 export default defineComponent({
   name: 'LoginRegister',
@@ -45,7 +48,8 @@ export default defineComponent({
           loading: false,
           percentage: 0
         },
-      interval: null
+      interval: null,
+      store: useStore()
     }
   },
   methods: {
