@@ -1,7 +1,13 @@
 <template>
   <q-page class="flex column">
-    <div v-for="message in messages" :key="message.userId" class="q-pa-md column col">
+
+    <q-banner class="bg-grey-4 text-center">
+      User is offline
+    </q-banner>
+
+    <div class="q-pa-md column col justify-end">
       <q-chat-message
+        v-for="message in messages" :key="message.userId"
         :name="userName(message.userId)"
         :sent="sent(message.userId)"
         :text="[message.text]"
@@ -12,16 +18,14 @@
 
     <q-footer elevated>
       <q-toolbar>
-        <q-input v-model="newMessage" bg-color="white" class="full-width" dense label="Send a message" outlined rounded>
-          <template v-slot:before>
-            <q-avatar>
-              <img alt="Profile picture" src="https://cdn.quasar.dev/img/avatar5.jpg">
-            </q-avatar>
-          </template>
-          <template v-slot:after>
-            <q-btn color="white" dense flat icon="send" round v-on:click="sendMessage"/>
-          </template>
-        </q-input>
+        <q-form class="full-width" @submit="sendMessage()">
+          <q-input v-model="newMessage" bg-color="white" class="full-width" dense label="Send a message" outlined
+                   rounded>
+            <template v-slot:after>
+              <q-btn color="white" dense flat icon="send" round v-on:click="sendMessage"/>
+            </template>
+          </q-input>
+        </q-form>
       </q-toolbar>
     </q-footer>
 
@@ -40,6 +44,7 @@ export default defineComponent({
         {
           userId: 1,
           text: 'Hello'
+
         },
         {
           userId: 2,
