@@ -9,6 +9,12 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  props: {
+    userId: {
+      type: Number,
+      required: true
+    }
+  }
 
 })
 </script>
